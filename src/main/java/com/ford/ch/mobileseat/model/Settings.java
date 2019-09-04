@@ -12,18 +12,18 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "USERS")
-public class User implements Serializable
+@Table(name = "SETTINGS")
+public class Settings implements Serializable
 {
 	@Id
-	@Column(name = "cdsid")
-	private String cdsid;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 
 	@Column(name = "name")
 	@NotNull
 	private String name;
 
-	@Column(name = "password")
+	@Column(name = "value")
 	@NotNull
-	private String password;
+	private String value;
 }

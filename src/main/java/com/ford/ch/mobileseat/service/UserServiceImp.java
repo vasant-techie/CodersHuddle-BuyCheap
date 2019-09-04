@@ -18,19 +18,16 @@ public class UserServiceImp extends UserService
 	@Autowired
 	private UsersRepository userRepository;
 
-	@Override
 	public Page<User> getAll(Pageable pageable )
 	{
 		return userRepository.findAll( pageable );
 	}
 
-	@Override
-	public User add( User o )
+	public User add(User user)
 	{
-		return userRepository.save( o );
+		return userRepository.save(user);
 	}
 
-	@Override
 	public User update( User o, String cdsid )
 	{
 		User user = checkIfIdIsPresentandReturnUser( cdsid );
@@ -39,13 +36,11 @@ public class UserServiceImp extends UserService
 		return userRepository.save( user );
 	}
 
-	@Override
 	public User getById( String cdsid )
 	{
 		return checkIfIdIsPresentandReturnUser( cdsid );
 	}
 
-	@Override
 	public User deleteById( String cdsid )
 	{
 		User user = checkIfIdIsPresentandReturnUser( cdsid );

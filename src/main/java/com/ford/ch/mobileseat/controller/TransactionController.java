@@ -1,8 +1,9 @@
 package com.ford.ch.mobileseat.controller;
 
+import com.ford.ch.mobileseat.model.BookingInfo;
 import com.ford.ch.mobileseat.model.User;
 import com.ford.ch.mobileseat.results.ResponseWrapper;
-import com.ford.ch.mobileseat.service.UserService;
+import com.ford.ch.mobileseat.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,51 +16,38 @@ import javax.validation.Valid;
 
 @Validated
 @RestController
-@RequestMapping("/api/v1/user")
+@RequestMapping("/api/v1/booking")
 public class TransactionController
 {
 
 	@Autowired
-	private UserService userMainService;
-
-	/*@GetMapping(value = "/{id}")
-	public ResponseWrapper<Author> getAuthorById(
-			@Valid @Pattern(regexp = REGEX_FOR_NUMBERS, message = MESSAGE_FOR_REGEX_NUMBER_MISMATCH) @PathVariable(value = "id") String id )
-	{
-		return new ResponseWrapper<>( authorMainService.getById( Integer.parseInt( id ) ), HttpStatus.OK );
-	}*/
-
-	@GetMapping(value = "/{id}", produces = "application/json")
-	public User getUserById(
-			@PathVariable(value = "id") String cdsid )
-	{
-		return userMainService.getById(cdsid);
-	}
-
-	@GetMapping()
-	public ResponseWrapper<Page<User>> getUserAll(Pageable pageable )
-	{
-		return new ResponseWrapper<>( userMainService.getAll( pageable ), HttpStatus.OK );
-	}
+	private BookingService bookingMainService;
 
 	@PostMapping
-	public ResponseWrapper<User> createUser( @Valid @RequestBody User user )
+	public ResponseWrapper<BookingInfo> createBooking( @RequestBody @Valid  BookingInfo bookingInfo )
 	{
-		return new ResponseWrapper<>( userMainService.add( user ), HttpStatus.OK );
+		return new ResponseWrapper<>( bookingMainService.add( bookingInfo ), HttpStatus.OK );
 	}
 
-	@DeleteMapping(value = "/{id}")
-	public ResponseWrapper<User> deleteUser(
-			@Valid @PathVariable(value = "id") String cdsid )
+	@GetMapping(value = "/{id}", produces = "application/json")
+	public BookingInfo getBookingById(
+			@PathVariable(value = "id") Integer bookingId )
 	{
-		return new ResponseWrapper<>( userMainService.deleteById( cdsid ), HttpStatus.OK );
+		return bookingMainService.getById(bookingId);
+	}
+
+	/*@DeleteMapping(value = "/{id}")
+	public ResponseWrapper<BookingInfo> cancelBooking(
+			@Valid @PathVariable(value = "id") String bookingId )
+	{
+		return new ResponseWrapper<>( bookingMainService.cancelBookingById( bookingId ), HttpStatus.OK );
 	}
 
 	@PatchMapping(value = "/{id}")
-	public ResponseWrapper<User> updateUser( @Valid @RequestBody User user,
+	public ResponseWrapper<BookingInfo> updateBooking( @Valid @RequestBody User user,
 			@Valid @PathVariable(value = "id") String cdsid )
 	{
-		return new ResponseWrapper<>( userMainService.update( user, cdsid), HttpStatus.OK );
-	}
+		return new ResponseWrapper<>( bookingMainService.updateBooking( user, cdsid), HttpStatus.OK );
+	}*/
 
 }

@@ -5,7 +5,7 @@ import org.springframework.data.domain.Pageable;
 
 public interface MainService<T>
 {
-	Page<T> getAll(Pageable pageable);
+	/*Page<T> getAll(Pageable pageable);
 
 	T add(T o);
 
@@ -13,6 +13,6 @@ public interface MainService<T>
 
 	T getById(String id);
 
-	T deleteById(String id);
+	T deleteById(String id);*/
 }
 

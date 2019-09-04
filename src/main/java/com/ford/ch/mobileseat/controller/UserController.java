@@ -30,11 +30,11 @@ public class UserController
 	}*/
 
 	@GetMapping(value = "/{id}", produces = "application/json")
-	public User getUserById(
-			@PathVariable(value = "id") String cdsid )
-	{
-		return userMainService.getById(cdsid);
-	}
+public User getUserById(
+		@PathVariable(value = "id") String cdsid )
+{
+	return userMainService.getById(cdsid);
+}
 
 	@GetMapping()
 	public ResponseWrapper<Page<User>> getUserAll(Pageable pageable )
