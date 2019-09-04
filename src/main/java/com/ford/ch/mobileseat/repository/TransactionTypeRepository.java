@@ -1,12 +1,12 @@
 package com.ford.ch.mobileseat.repository;
 
 import com.ford.ch.mobileseat.model.Transaction;
-import com.ford.ch.mobileseat.model.User;
+import com.ford.ch.mobileseat.model.TransactionTypes;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface TransactionsRepository extends JpaRepository<Transaction, Integer>
+public interface TransactionTypeRepository extends JpaRepository<TransactionTypes, Integer>
 {
 
 }

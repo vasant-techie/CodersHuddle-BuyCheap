@@ -32,4 +32,6 @@ public class Transaction implements Serializable
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "bookingid", referencedColumnName = "bookingid", nullable = false)
 	private BookingInfo bookingInfo;
+
+
 }

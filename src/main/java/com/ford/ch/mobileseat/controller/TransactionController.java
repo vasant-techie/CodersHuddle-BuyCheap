@@ -1,9 +1,14 @@
 package com.ford.ch.mobileseat.controller;
 
+import com.ford.ch.mobileseat.constants.TransType;
 import com.ford.ch.mobileseat.model.BookingInfo;
+import com.ford.ch.mobileseat.model.Transaction;
+import com.ford.ch.mobileseat.model.TransactionTypes;
 import com.ford.ch.mobileseat.model.User;
 import com.ford.ch.mobileseat.results.ResponseWrapper;
 import com.ford.ch.mobileseat.service.BookingService;
+import com.ford.ch.mobileseat.service.TransactionService;
+import com.ford.ch.mobileseat.service.TransactionTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,6 +17,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.Instant;
 
 
 @Validated
@@ -22,11 +28,25 @@ public class TransactionController
 
 	@Autowired
 	private BookingService bookingMainService;
+	@Autowired
+	private TransactionService transactionMainService;
+	@Autowired
+	private TransactionTypeService transactionTypeMainService;
 
 	@PostMapping
-	public ResponseWrapper<BookingInfo> createBooking( @RequestBody @Valid  BookingInfo bookingInfo )
+	public BookingInfo createBooking( @RequestBody @Valid  BookingInfo bookingInfo )
 	{
-		return new ResponseWrapper<>( bookingMainService.add( bookingInfo ), HttpStatus.OK );
+		BookingInfo persistedBookingData = bookingMainService.add(bookingInfo);
+
+		//Add an entry into Transaction table
+		Transaction transaction = new Transaction();
+		TransactionTypes transType = transactionTypeMainService.getById(TransType.NEW_BOOKING.transTypeId);
+		transaction.setTransType(transType);
+		transaction.setTransTime(Instant.now());
+		transaction.setBookingInfo(persistedBookingData);
+		transactionMainService.add(transaction);
+
+		return persistedBookingData;
 	}
 
 	@GetMapping(value = "/{id}", produces = "application/json")

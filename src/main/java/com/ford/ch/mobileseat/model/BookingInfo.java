@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Collection;
 import java.util.List;
 
@@ -50,5 +53,4 @@ public class BookingInfo implements Serializable
 	/*@OneToMany
 	@JoinTable(name = "Transaction", joinColumns = @JoinColumn(name = "bookingid"))
 	private List<Transaction> txns;*/
-
 }
