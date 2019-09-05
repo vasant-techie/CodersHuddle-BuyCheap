@@ -56,6 +56,15 @@ public class TransactionController
 		return bookingMainService.getById(bookingId);
 	}
 
+
+	@GetMapping(value = "/{startTime}/{endTime}", produces = "application/json")
+	public BookingInfo getBookingInfoForTimeline(String givenStartTime, String givenEndTime)
+	{
+		//return bookingMainService.getById(bookingId);
+		return null;
+	}
+
+
 	/*@DeleteMapping(value = "/{id}")
 	public ResponseWrapper<BookingInfo> cancelBooking(
 			@Valid @PathVariable(value = "id") String bookingId )

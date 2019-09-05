@@ -13,4 +13,6 @@ public interface BookingInfoRepository extends JpaRepository<BookingInfo, Intege
     List<BookingInfo> findByDateAndCdsIdAndIsActive(String date, String cdsid, boolean isActive);
 
     List<BookingInfo> findByDateAndSeatIdAndIsActive(String date, String seatId, boolean b);
+
+    //List<BookingInfo> findByStartDateBeforeAndEndDateAfter(String date, String seatId, boolean b);
 }
