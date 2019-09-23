@@ -1,4 +1,5 @@
--- we don't know how to generate root <with-no-name> (class Root) :(
+create schema BUYCHEAP;
+
 create table OUTLETS
 (
     OUTLET_ID INTEGER not null
@@ -15,7 +16,7 @@ create table STORES
     STORE_NAME VARCHAR(100),
     CITY VARCHAR(50),
     AREA VARCHAR(50),
-    DISTANCE_FROM_LANDMARK INTEGER,
+    RADIUS INTEGER,
     ZIP_CODE INTEGER,
     PHONE_NUMBER INTEGER,
     STREET_NAME VARCHAR(100),
@@ -43,6 +44,11 @@ create table USER_PREFERENCES
         constraint USER_PREFERENCES_USERS_USERNAME_FK
             references USERS (USERNAME),
     RADIUS INTEGER,
-    OUTLETID INTEGER
+    OUTLET_ID INTEGER
+        constraint USER_PREFERENCES_OUTLETS_OUTLET_ID_FK
+            references OUTLETS,
+    ID INTEGER default AUTOINCREMENT: start 1 increment 1 generated always as identity
+        constraint USER_PREFERENCES_PK
+        primary key
 );
 
