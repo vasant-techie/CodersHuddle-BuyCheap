@@ -31,9 +31,9 @@ public class Stores implements Serializable
 	@NotNull
 	private String area;
 
-	@Column(name = "distance_from_landmark")
+	@Column(name = "radius")
 	@NotNull
-	private String distanceFrom;
+	private String radius;
 
 	@Column(name = "zip_code")
 	@NotNull
@@ -53,7 +53,7 @@ public class Stores implements Serializable
 
 	@Column(name = "discount_percentage")
 	@NotNull
-	private String discountPercentage;
+	private String discount;
 
 	@Column(name = "coupon_code")
 	@NotNull

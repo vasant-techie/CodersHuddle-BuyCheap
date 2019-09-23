@@ -5,7 +5,7 @@ plugins {
 	id 'war'
 }
 
-group = 'com.ford.ch.mobileseat'
+group = 'com.ford.ch.buycheap'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
@@ -23,7 +23,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
-	runtimeOnly 'org.apache.derby:derby'
+	runtimeOnly 'org.apache.derby:derbyclient:10.14.2.0'
 	annotationProcessor 'org.projectlombok:lombok'
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'

@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.time.Instant;
 
 @Data
 @AllArgsConstructor
@@ -16,22 +15,22 @@ import java.time.Instant;
 @Table(name = "USER_PREFERENCES")
 public class UserPreferences implements Serializable
 {
-	/*@Id
-	@Column(name = "username")
+	@Id
+	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private String transId;*/
+	private Integer id;
 
-	@JoinColumn(name = "username")
+	/*@JoinColumn(name = "username")
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-	private User user;
+	private User user;*/
 
 	@Column(name = "radius")
 	@NotNull
 	private Integer radius;
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "outlet_id", referencedColumnName = "outlet_id", nullable = false)
-	private Outlet outlet;
+	/*@JoinColumn(name = "outlet_id", referencedColumnName = "outlet_id", nullable = false)
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+	private Outlet outlet;*/
 
 
 }

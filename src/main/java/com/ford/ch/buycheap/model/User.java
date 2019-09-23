@@ -16,8 +16,8 @@ import java.io.Serializable;
 public class User implements Serializable
 {
 	@Id
-	@Column(name = "cdsid")
-	private String cdsid;
+	@Column(name = "username")
+	private String username;
 
 	@Column(name = "name")
 	@NotNull
@@ -26,4 +26,16 @@ public class User implements Serializable
 	@Column(name = "password")
 	@NotNull
 	private String password;
+
+	@Column(name = "city")
+	@NotNull
+	private String city;
+
+	@Column(name = "area")
+	@NotNull
+	private String area;
+
+	@Column(name = "zip_code")
+	@NotNull
+	private String zipCode;
 }
